@@ -1,0 +1,38 @@
+<%= button_to "New Game", new_path, :method => "get" %>
+
+<%= form_tag move_path, :method => :post, :id => "game_board" do %>
+	<div id="board">
+		<% 3.times do |x| %>
+		<div class="row">
+			<% 3.times do |y| %>
+			<div class="box">
+			<label>
+				<% puts "**** @board.nil? #{@board.nil?} ****" %>
+				<% if @board.at(x,y) == "x" %>
+				<input type="checkbox" name="<%= x %><%= y %>" class="x" disabled>X<input>
+				<% elsif @board.at(x,y) == "o" %>
+				<input type="checkbox" name="<%= x %><%= y %>" class="o" disabled>O<input>
+				<% else %>
+				<input type="checkbox" name="numbers[<%= x %><%= y %>]" />
+				<% end %>
+			</label>
+			</div>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+<% end %>
+<script type="text/javascript">
+	$("form #board input:checkbox").live("click", function(){
+		$.ajax({
+			type: 'POST',
+			url:"/move",
+			data: $(this).serialize(),
+			success: function(data){
+				$("#board").html(data);
+				$('form input:checkbox').bind("click", submitMove);
+			},
+			dataType: 'html'
+		});
+	});
+</script>

@@ -1,0 +1,17 @@
+<% 3.times do |x| %>
+<div class="row">
+	<% 3.times do |y| %>
+	<div class="box">
+	<label>
+		<% if @board[x][y] == 'x' %>
+		<input type="checkbox" name="<%= x %><%= y %>" class="x" disabled>X<input>
+		<% elsif @board[x][y] == "o" %>
+		<input type="checkbox" name="<%= x %><%= y %>" class="o" disabled>O<input>
+		<% else %>
+		<input type="checkbox" name="numbers[<%= x %><%= y %>]" />
+		<% end %>
+	</label>
+	</div>
+	<% end %>
+</div>
+<% end %>
