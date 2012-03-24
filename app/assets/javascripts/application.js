@@ -13,3 +13,17 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function(){
+	$("form #board input:checkbox").live("click", function(){
+		$.ajax({
+			type: 'POST',
+			url:"/move",
+			data: $(this).serialize(),
+			success: function(data){
+				$("#board").html(data);
+			},
+			dataType: 'html'
+		});
+	});
+});
