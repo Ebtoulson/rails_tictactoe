@@ -1,0 +1,15 @@
+<form id="id">
+	<div id="board">
+		<% 3.times do |x| %>
+		<div class="row">
+			<% 3.times do |y| %>
+			<div class="box">
+			<label>
+				<input type="checkbox" name="x<%= x %>y<%= y %>" /input>
+			</label>
+			</div>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+</form>
