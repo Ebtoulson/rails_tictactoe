@@ -107,10 +107,10 @@ class AI
 				elsif @board[x-3] == '' and @board[x+3] == ''
 					return x+3
 				end
-				[4,0,2,6,8,1,3,5,7].each do |index|
-					if @board[index] == ''
-						return index
-					end
+			end
+			[4,0,2,6,8,1,3,5,7].each do |index|
+				if @board[index] == ''
+					return index
 				end
 			end
 		end
