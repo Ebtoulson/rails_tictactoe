@@ -3,6 +3,9 @@ class PlayController < ApplicationController
 
 	def show
 		@board = get_board
+		#prevents the user from completing a game 
+		#and then going to the show action and continue playing
+		@completed = session[:completed]
 	end
 
 	def edit #getting the move and returning the computers move
@@ -13,18 +16,23 @@ class PlayController < ApplicationController
 		ai.setBoard(@board)
 		if ai.checkForWinner(ai.getPositions('x'))
 			#X Wins
+			@message = "X Wins"
 			@completed = true
+			session[:completed] = true
 		elsif !ai.isBoardFull?
 			move = ai.getComputerMove()
-			puts "COMPUTERS MOVE #{move}"
-			row = move/3
-			column = move%3
-			@board = get_board.set_move('o',row, column)
+			@board = get_board.set_move('o',move/3, move%3)
 			ai.setBoard(@board)
 			if ai.checkForWinner(ai.getPositions('o'))
 				#O Wins
+				@message = "O Wins"
 				@completed = true
+				session[:completed] = true
 			end
+		else
+			@message = "Tie"
+			@completed = true 
+			session[:completed] = true
 		end
 		respond_to do |format|
 			format.js
@@ -42,6 +50,7 @@ class PlayController < ApplicationController
 		def get_board
 			if session[:board] == nil
 				session[:board] = TicTacToe.new
+				session[:completed] = false
 			end
 			return session[:board]
 		end

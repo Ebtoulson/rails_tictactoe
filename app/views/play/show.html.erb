@@ -1,7 +1,8 @@
 <%= button_to "New Game", new_path, :method => "get" %>
 
 <%= form_tag move_path, :method => :post, :id => "game_board" do %>
-	<div id="board">
+	<div id="board_container">
+		<div id="board">
 		<% 3.times do |x| %>
 		<div class="row">
 			<% 3.times do |y| %>
@@ -19,5 +20,7 @@
 			<% end %>
 		</div>
 		<% end %>
+		</div>
+		<div class="message"></div>
 	</div>
 <% end %>

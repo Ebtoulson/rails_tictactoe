@@ -21,7 +21,7 @@ $(function(){
 			url:"/move",
 			data: $(this).serialize(),
 			success: function(data){
-				$("#board").html(data);
+				$("#board_container").html(data);
 			},
 			dataType: 'html'
 		});

@@ -79,10 +79,8 @@ class AI
 			#blocking move
 			@@wins.each do |x|
 				if (x&person).length == 2
-					puts "BLOCK AT? #{x&person} *****"
 					index = (x-person).pop
 					if @board[index] == ''
-						puts "BLOCKED #{index}"
 						return index
 					end
 				end
