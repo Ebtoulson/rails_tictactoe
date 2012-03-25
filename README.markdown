@@ -1,1 +1,2 @@
 # Ruby on Rails - TicTacToe
+This application allows a user to play against an unbeatable computer AI. Feel free to play at [http://radiant-river-6112.heroku.com/](http://radiant-river-6112.heroku.com/) host by Heroku
