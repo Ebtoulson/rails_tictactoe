@@ -7,13 +7,12 @@
 			<% 3.times do |y| %>
 			<div class="box">
 			<label>
-				<% puts "**** @board.nil? #{@board.nil?} ****" %>
 				<% if @board.at(x,y) == "x" %>
 				<input type="checkbox" name="<%= x %><%= y %>" class="x" disabled>X<input>
 				<% elsif @board.at(x,y) == "o" %>
 				<input type="checkbox" name="<%= x %><%= y %>" class="o" disabled>O<input>
 				<% else %>
-				<input type="checkbox" name="numbers[<%= x %><%= y %>]" />
+				<input type="checkbox" name="numbers[<%= x %><%= y %>]" <% if @completed %> disabled<% end %> />
 				<% end %>
 			</label>
 			</div>

@@ -8,7 +8,7 @@
 		<% elsif @board[x][y] == "o" %>
 		<input type="checkbox" name="<%= x %><%= y %>" class="o" disabled>O<input>
 		<% else %>
-		<input type="checkbox" name="numbers[<%= x %><%= y %>]" />
+		<input type="checkbox" name="numbers[<%= x %><%= y %>]" <% if @completed %> disabled<% end %> />
 		<% end %>
 	</label>
 	</div>

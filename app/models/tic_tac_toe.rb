@@ -1,5 +1,5 @@
 class TicTacToe < ActiveRecord::Base
-	attr_accessor :board
+	attr_accessor :board, :completed
 
 	def initialize
 		@board = [
@@ -7,6 +7,7 @@ class TicTacToe < ActiveRecord::Base
 			['','',''],
 			['','','']
 		]
+		@completed = false
 	end
 
 	def at(x,y)
